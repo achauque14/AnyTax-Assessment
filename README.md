@@ -25,3 +25,31 @@ The backend is not required. All API responses are intercepted using Playwright'
   "Status": "Success",
   "TransactionID": "12345"
 }
+```
+### Test B – Failed Transfer
+- Endpoint: POST /api/transfer
+- Mocked Response (Intentionally incorrect)
+
+## **Task 2 – E2E UI Flow (Public Demo Site)**
+
+**Scenario:**  
+Perform a single end-to-end workflow on a public demo site with price validation (Fintech twist).
+
+**Steps:**
+1. Navigate to SauceDemo Website
+2. Login using:
+   - Username: `standard_user`
+   - Password: `secret_sauce`
+3. Add the first product to the cart  
+4. Go to the cart and verify the product is present  
+5. Verify the product price is in a valid currency format (e.g., `$29.99`)
+
+**Files:**  
+- `pages/ShopPage.ts` – Page Object  
+- `tests/shop.spec.ts` – Test script  
+
+**Command to run:**
+
+```bash
+npm test
+
