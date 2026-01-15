@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money transfer - mock</title>
+</head>
+<body>
+  <h1>Money Transfer</h1>
+  <button id="transferBtn" type="submit">Transfer Money</button>
+  <script>
+    document.getElementById("transferBtn").addEventListener("click", async () => {
+      try {
+        const response = await fetch("/api/transfer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: 100 })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          console.log("SUCCESS:", data);
+          alert(`Transfer Successful. Transaction ID: ${data.TransactionID}`);
+        } else {
+          console.error("FAILURE:", data);
+          alert(`Transfer Failed: ${data.Error}`);
+        }
+      } catch (err) {
+        console.error("Unexpected Error", err);
+      }
+    });
+  </script>
+</body>
+</html>
